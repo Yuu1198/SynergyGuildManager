@@ -8,3 +8,13 @@ h1 {
     color: #2563eb;
     text-align: center;
 }
+
+button {
+    background-color: #0056d6;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 8px;
+}

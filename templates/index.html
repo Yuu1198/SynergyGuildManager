@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Synergy Guild Manager</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
 </head>
 <body>
     <header>
@@ -23,11 +24,12 @@
                 <li>Organize raids</li>
             </ul>
         </section>
+        <section>
+            <button id="guildmembers-button">View Guildmembers</button>
+        </section>
     </main>
     <footer>
         <p>&copy; 2026 Synergy Guild Manager</p>
     </footer>
-
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
