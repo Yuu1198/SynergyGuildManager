@@ -24,9 +24,18 @@
                 <li>Organize raids</li>
             </ul>
         </section>
-        <section>
+        <div class="guildmembers-container">
             <button id="guildmembers-button">View Guildmembers</button>
-        </section>
+            <table id="guildmembers-table" hidden>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Class</th>
+                    </tr>
+                </thead>
+                <tbody id="guildmembers-body"></tbody>
+            </table>
+        </div>
     </main>
     <footer>
         <p>&copy; 2026 Synergy Guild Manager</p>
