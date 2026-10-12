@@ -26,7 +26,7 @@
                         {% for member in members %}
                         <tr>
                             <td>{{ member.name }}</td>
-                            <td>{{ member.class_name }}</td>
+                            <td class="{{ member.class_name | lower }}">{{ member.class_name }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>

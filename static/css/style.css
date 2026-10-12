@@ -30,6 +30,51 @@ h1 {
     text-align: center;
 }
 
+td.warrior {
+    background-color: rgb(112, 76, 10);
+    color: white;
+}
+
+td.mage {
+    background-color: rgb(0, 204, 255);
+    color: white;
+}
+
+td.shaman {
+    background-color: #00CED1; 
+    color: white;
+}
+
+td.warlock {
+    background-color: #8A2BE2; 
+    color: white;
+}
+
+td.priest {
+    background-color: #ffffff; 
+    color: black;
+}
+
+td.rogue {
+    background-color: #e0d424; 
+    color: white;
+}
+
+td.paladin {
+    background-color: #FF69B4; 
+    color: white;
+}
+
+td.druid {
+    background-color: #fa7b13; 
+    color: white;
+}
+
+td.hunter {
+    background-color: #228B22; 
+    color: white;
+}
+
 footer {
     text-align: right;
     margin-top: 40px;
