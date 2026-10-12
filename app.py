@@ -1,25 +1,17 @@
 from flask import Flask, render_template, jsonify
+from guild_member_dao import GuildMemberDAO
 
 app = Flask(__name__)
-
-class GuildMember:
-    def __init__(self, name, class_name):
-        self.name = name
-        self.class_name = class_name
-
-    def __repr__(self):
-        return f"GuildMember(name={self.name}, class_name={self.class_name}))"
-
 
 # Define a route for the home page
 @app.route('/')
 def home():
     return render_template('index.html')
 
-# Define a route for the API endpoint to get guild members
+# Define a route to get guild members
 @app.route('/guildmembers', methods=['GET'])
 def get_guild_members_api():
-    members = get_guild_members()
+    members = GuildMemberDAO.get_all_guild_members()
 
     return jsonify([
         {
@@ -29,17 +21,6 @@ def get_guild_members_api():
         for member in members
     ])
 
-def get_guild_members():
-    # Sample data for guild members
-    members = [
-        GuildMember("Calcain", "Warrior"),
-        GuildMember("Nortag", "Rogue"),
-        GuildMember("Biha", "Druid"),
-        GuildMember("Neptune", "Mage"),
-        GuildMember("Jocap", "Hunter")
-    ]
-    return members
-
-
 if __name__ == '__main__':
+    GuildMemberDAO.init_db()  # Initialize the database and add sample data
     app.run(debug=True)
