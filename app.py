@@ -6,7 +6,8 @@ app = Flask(__name__)
 # Define a route for the home page
 @app.route('/')
 def home():
-    return render_template('index.html')
+    members = GuildMemberDAO.get_all_guild_members()
+    return render_template('index.html', members=members)
 
 # Define a route to get guild members
 @app.route('/guildmembers', methods=['GET'])

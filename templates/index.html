@@ -12,28 +12,24 @@
         <h1>Synergy Guild Manager</h1>
     </header>
     <main>
-        <section>
-            <h2>Welcome to the Synergy Guild Manager</h2>
-            <p>Manage your guilds efficiently and effectively.</p>
         </section>
-        <section>
-            <h2>Features</h2>
-            <ul>
-                <li>Track guildies classes and levels</li>
-                <li>Track guildies professions</li>
-                <li>Organize raids</li>
-            </ul>
-        </section>
-        <div class="guildmembers-container">
-            <button id="guildmembers-button">View Guildmembers</button>
-            <table id="guildmembers-table" hidden>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Class</th>
-                    </tr>
-                </thead>
-                <tbody id="guildmembers-body"></tbody>
+        <div>
+            <table id="guildmembers-table">
+                <caption id="guildmembers-caption">Guild Members</caption>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Class</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for member in members %}
+                        <tr>
+                            <td>{{ member.name }}</td>
+                            <td>{{ member.class_name }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
             </table>
         </div>
     </main>
