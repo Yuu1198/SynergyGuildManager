@@ -9,13 +9,43 @@ h1 {
     text-align: center;
 }
 
-#guildmembers-caption {
-    font-weight: bold;
-    font-family: Arial, sans-serif;
-    font-size: 1.5em;
-    margin-bottom: 20px;
-    color: darkblue;
+/*Form Styles*/
+#add-member-button,
+#add-member-form button {
+    padding: 10px 16px;
+    cursor: pointer;
 }
+
+#add-member-form {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+}
+
+#add-member-form[hidden] {
+    display: none;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-row label {
+    width: auto;
+}
+
+#name,
+#class_name {
+    padding: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
 
 #guildmembers-table {
     margin: 0 auto;

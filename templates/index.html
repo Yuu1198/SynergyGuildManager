@@ -12,24 +12,49 @@
         <h1>Synergy Guild Manager</h1>
     </header>
     <main>
-        </section>
-        <div>
-            <table id="guildmembers-table">
-                <caption id="guildmembers-caption">Guild Members</caption>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Class</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for member in members %}
-                        <tr>
-                            <td>{{ member.name }}</td>
-                            <td class="{{ member.class_name | lower }}">{{ member.class_name }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
+        <h2>Guild Members</h2>
+
+        <button type="button" id="add-member-button">
+            Add Guildmember
+        </button>
+
+        <form id="add-member-form" hidden>
+            <div class="form-row">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"required>
+            </div>
+            
+            <div class="form-row">
+                <label for="class_name">Class:</label>
+                <select id="class_name" name="class_name" required>
+                    <option value="">Select a class</option>
+                    <option value="Warrior">Warrior</option>
+                    <option value="Mage">Mage</option>
+                    <option value="Rogue">Rogue</option>
+                    <option value="Priest">Priest</option>
+                    <option value="Hunter">Hunter</option>
+                    <option value="Paladin">Paladin</option>
+                    <option value="Druid">Druid</option>
+                    <option value="Shaman">Shaman</option>
+                    <option value="Warlock">Warlock</option>
+                </select>
+            </div>
+
+            <button type="submit" id="add-member-form-button">Add</button>
+            <p id="form-message"></p>
+        </form>
+
+    </main>
+    <div>
+        <table id="guildmembers-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Class</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
             </table>
         </div>
     </main>

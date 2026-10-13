@@ -41,3 +41,13 @@ class GuildMemberDAO:
             GuildMember(member['name'], member['class_name'])
             for member in members
         ]
+
+    @staticmethod
+    def add_guild_member(name, class_name):
+        with get_db_connection() as connection:
+            cursor = connection.execute(
+                'INSERT INTO guild_members (name, class_name) VALUES (?, ?)',
+                (name, class_name)
+            )
+
+            return cursor.rowcount == 1  # Return True if one row was inserted, False otherwise
