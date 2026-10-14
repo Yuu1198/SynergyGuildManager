@@ -11,24 +11,6 @@ class GuildMemberDAO:
                         class_name TEXT NOT NULL
                     )
                 ''')
-        
-                # Add sample data to the database if it is empty
-                count = connection.execute('' \
-                'SELECT COUNT(*) FROM guild_members'
-                ).fetchone()[0]
-        
-                if count == 0:
-                    sample_members = [
-                        ("Calcain", "Warrior"),
-                        ("Nortag", "Rogue"),
-                        ("Biha", "Druid"),
-                        ("Neptune", "Mage"),
-                        ("Jocap", "Hunter")
-                    ]
-                    connection.executemany('''
-                        INSERT INTO guild_members (name, class_name)
-                        VALUES (?, ?)
-                    ''', sample_members)
 
     @staticmethod
     def get_all_guild_members():
@@ -51,3 +33,13 @@ class GuildMemberDAO:
             )
 
             return cursor.rowcount == 1  # Return True if one row was inserted, False otherwise
+
+    @staticmethod
+    def delete_guild_member(name):
+        with get_db_connection() as connection:
+            cursor = connection.execute(
+                "DELETE FROM guild_members WHERE name = ?",
+                (name, )
+            )
+
+            return cursor.rowcount > 0

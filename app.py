@@ -41,6 +41,20 @@ def add_guild_member_api():
         return jsonify({'error': 'Failed to add guild member'}), 500
 
 
+@app.route('/guildmembers/<name>', methods=['DELETE'])
+def delete_guild_member_api(name):
+    success = GuildMemberDAO.delete_guild_member(name)
+
+    if success:
+        return jsonify({
+            'message' : 'Guild member deleted sucessfully'
+        }), 200
+
+    return jsonify({
+        'error': 'Guild member not found'
+    }), 404
+
+
 if __name__ == '__main__':
     GuildMemberDAO.init_db()  # Initialize the database and add sample data
     app.run(debug=True)

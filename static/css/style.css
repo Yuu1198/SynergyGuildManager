@@ -105,6 +105,17 @@ td.hunter {
     color: white;
 }
 
+.delete-button {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #dd2a3c;
+    color: white;
+    border-radius: 4px;
+}
+.delete-button:hover {
+    background-color: #a0202d;
+}
+
 footer {
     text-align: right;
     margin-top: 40px;

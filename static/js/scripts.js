@@ -2,6 +2,7 @@ const addMemberForm = document.getElementById('add-member-form');
 const addMemberButton = document.getElementById('add-member-button');
 
 const formMessage = document.getElementById('form-message');
+const tableMessage = document.getElementById('table-message');
 
 // Add new guild member
 addMemberButton.addEventListener('click', function() {
@@ -44,6 +45,28 @@ addMemberForm.addEventListener('submit', async function(event) {
     }
 });
 
+async function deleteGuildMember(name) {
+    try {
+            const response = await fetch(`/guildmembers/${encodeURIComponent(name)}`, {
+                method: 'DELETE'
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                formMessage.textContent = 'Could not delete guild member.';
+                formMessage.style.color = 'red';
+                return;
+            }
+
+            // Reload the table
+            await loadGuildMembers();
+    } catch (error) {
+        formMessage.textContent = 'Could not connect to server.';
+        formMessage.style.color = 'red';
+    }
+}
+
 // Reload guild member table
 async function loadGuildMembers() {
     const response = await fetch('/guildmembers'); // Request to GET all guild members
@@ -71,6 +94,18 @@ async function loadGuildMembers() {
         // Apply color based on class_name
         classCell.classList.add(guildMember.class_name.trim().toLowerCase());
         row.appendChild(classCell);
+
+        // Delete button cell
+        const deleteCell = document.createElement('td');
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'X';
+        deleteButton.classList.add('delete-button');
+        // Click event
+        deleteButton.addEventListener('click', async function () {
+            deleteGuildMember(guildMember.name);
+        });
+        deleteCell.appendChild(deleteButton);
+        row.appendChild(deleteCell);
 
         tableBody.appendChild(row);
     });
