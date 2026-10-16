@@ -39,6 +39,8 @@ addMemberForm.addEventListener('submit', async function(event) {
         // Refresh the guild members table
         await loadGuildMembers();
 
+        addMemberForm.hidden = true;
+
     } catch (error) {
         formMessage.textContent = 'A guild member with this name already exists.';
         formMessage.style.color = 'red';
@@ -69,7 +71,9 @@ async function deleteGuildMember(name) {
 
 // Reload guild member table
 async function loadGuildMembers() {
-    const response = await fetch('/guildmembers'); // Request to GET all guild members
+    const orderBy = document.getElementById('sort-guild-members').value;
+
+    const response = await fetch(`/guildmembers?order_by=${encodeURIComponent(orderBy)}`); // Request to GET all guild members
 
     if (!response.ok) {
         throw new Error('Failed to load guild members');
@@ -110,5 +114,9 @@ async function loadGuildMembers() {
         tableBody.appendChild(row);
     });
 }
+
+document.getElementById('sort-guild-members').addEventListener('change', function() {
+    loadGuildMembers();
+});
 
 document.addEventListener("DOMContentLoaded", loadGuildMembers);

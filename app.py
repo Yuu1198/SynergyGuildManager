@@ -12,7 +12,9 @@ def home():
 # Define a route to get guild members
 @app.route('/guildmembers', methods=['GET'])
 def get_guild_members_api():
-    members = GuildMemberDAO.get_all_guild_members()
+    order_by = request.args.get('order_by', 'name')
+
+    members = GuildMemberDAO.get_all_guild_members(order_by)
 
     return jsonify([
         {

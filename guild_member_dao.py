@@ -13,10 +13,13 @@ class GuildMemberDAO:
                 ''')
 
     @staticmethod
-    def get_all_guild_members():
+    def get_all_guild_members(order_by='name'):
+        if order_by not in ('name', 'class_name'):
+            order_by = 'name'
+
         with get_db_connection() as connection:
             members = connection.execute(
-                'SELECT name, class_name FROM guild_members ORDER BY name'
+                f'SELECT name, class_name FROM guild_members ORDER BY {order_by}'
             ).fetchall()
 
         return [
